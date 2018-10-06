@@ -1,0 +1,34 @@
+---
+title: "workout01-yueling-wu"
+author: "yueling wu"
+date: "9/26/2018"
+output: github_document
+---
+```{r setup}
+knitr::opts_chunk$set(echo=TRUE,fig.path="Desktop/workout1/report/workout01-yueling-wu_files/")
+```
+
+```{r teams ranked by total salary}
+library(ggplot2)
+library(dplyr)
+nbanew = read.csv("~/Desktop/workout1/data/nba2018-teams.csv")
+meansum=mean(nbanew$salary)
+ggplot(nbanew,aes(x=reorder(team,salary),y=salary))+geom_bar(stat='identity')+coord_flip()+xlab("Team")+ylab("Salary (in millions)")+labs(title="NBA Teams ranked by Total Salary")+geom_hline(aes(yintercept=meansum),col="red")
+```
+
+```{r teams ranked by total points}
+meanpoints=mean(nbanew$points)
+ggplot(nbanew,aes(x=reorder(team,points),y=points))+geom_bar(stat='identity')+coord_flip()+xlab("Team")+ylab("Points")+labs(title="NBA Teams ranked by Total Points")+geom_hline(aes(yintercept=meanpoints),col="red")
+```
+
+```{r teams ranked by total efficiency}
+meaneff=mean(nbanew$efficiency)
+ggplot(nbanew,aes(x=reorder(team,efficiency),y=efficiency))+geom_bar(stat='identity')+coord_flip()+xlab("Team")+ylab("Efficiency")+labs(title="NBA Teams ranked by Total Efficiency")+geom_hline(aes(yintercept=meaneff),col="red")
+```
+
+```{r teams ranked by salary per point}
+salarypergame = (nbanew$salary/nbanew$points)*1000000
+meanspp=mean(salarypergame)
+ggplot(nbanew,aes(x=reorder(team,salarypergame),y=salarypergame))+geom_bar(stat='identity')+coord_flip()+xlab("Team")+ylab("Salary per point ($)")+labs(title="NBA Teams ranked by Salary Per Point")+geom_hline(aes(yintercept=meanspp),col="red")
+```
+
