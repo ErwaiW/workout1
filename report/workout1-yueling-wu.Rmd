@@ -32,3 +32,5 @@ meanspp=mean(salarypergame)
 ggplot(nbanew,aes(x=reorder(team,salarypergame),y=salarypergame))+geom_bar(stat='identity')+coord_flip()+xlab("Team")+ylab("Salary per point ($)")+labs(title="NBA Teams ranked by Salary Per Point")+geom_hline(aes(yintercept=meanspp),col="red")
 ```
 
+salary per point = salary / point  
+Salary per point is the average increasing of total money which a team earn after achieving one more point.
